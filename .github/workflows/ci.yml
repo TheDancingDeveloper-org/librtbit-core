@@ -21,11 +21,7 @@ jobs:
         run: git config --global url."https://x-access-token:${{ secrets.GHCR_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
       - name: Configure Cargo to use git CLI
-        run: |
-          mkdir -p ~/.cargo
-          printf '[net]
-git-fetch-with-cli = true
-' > ~/.cargo/config.toml
+        run: mkdir -p ~/.cargo && echo '[net]' > ~/.cargo/config.toml && echo 'git-fetch-with-cli = true' >> ~/.cargo/config.toml
 
       - uses: dtolnay/rust-toolchain@stable
         with:
