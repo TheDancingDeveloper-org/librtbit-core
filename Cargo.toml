@@ -24,7 +24,7 @@ serde_derive = "1"
 buffers = { git = "https://github.com/AusAgentSmith-org/librtbit-buffers.git", tag = "v0.1.0", package = "librtbit-buffers" }
 bencode = { git = "https://github.com/AusAgentSmith-org/librtbit-bencode.git", tag = "v0.1.0", package = "librtbit-bencode" }
 clone_to_owned = { git = "https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git", tag = "v0.1.0", package = "librtbit-clone-to-owned" }
-sha1w = { git = "https://github.com/AusAgentSmith-org/librtbit-sha1-wrapper.git", tag = "v0.1.0", package = "librtbit-sha1-wrapper", optional = true }
+sha1w = { git = "https://github.com/AusAgentSmith-org/librtbit-sha1-wrapper.git", tag = "v0.1.0", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
 itertools = "0.14"
 directories = "6"
 tokio-util = "0.7"
