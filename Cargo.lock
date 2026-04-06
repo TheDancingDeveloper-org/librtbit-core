@@ -437,8 +437,9 @@ dependencies = [
 
 [[package]]
 name = "librtbit-bencode"
-version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-bencode.git?tag=v0.1.0#86a794304eeb44f008650914700f70f59d0a5b7e"
+version = "0.1.1"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "3c7026c019e7aae5fbd1c9dc41f83648cc165f4be740dfe13496e4a248a5176b"
 dependencies = [
  "anyhow",
  "arrayvec",
@@ -453,8 +454,9 @@ dependencies = [
 
 [[package]]
 name = "librtbit-buffers"
-version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-buffers.git?tag=v0.1.0#3385f67c4dad792020603542eeb11853a5a60fc7"
+version = "0.1.1"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "5d32ad9f98e44df8995837f15628133a0dfcc604bc003b6298d1e238e0ceb4c7"
 dependencies = [
  "bytes",
  "librtbit-clone-to-owned",
@@ -464,15 +466,16 @@ dependencies = [
 
 [[package]]
 name = "librtbit-clone-to-owned"
-version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-clone-to-owned.git?tag=v0.1.0#205d2c1b13a18bd4c50856a0e2fece02e61716b4"
+version = "0.1.1"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "652077f668126ff93bf2c61fbfc88a38b60b9e50c1edc440a72c2a9a5b614459"
 dependencies = [
  "bytes",
 ]
 
 [[package]]
 name = "librtbit-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "bytes",
@@ -501,8 +504,9 @@ dependencies = [
 
 [[package]]
 name = "librtbit-sha1-wrapper"
-version = "0.1.0"
-source = "git+https://github.com/AusAgentSmith-org/librtbit-sha1-wrapper.git?tag=v0.1.0#15403f2292d878d159c1b52747a52667845133db"
+version = "0.1.1"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "db142701a46374113e30dd0b39ec0f0c6fca5fe7481e0108b8178914173d52f5"
 dependencies = [
  "assert_cfg",
  "aws-lc-rs",
@@ -734,6 +738,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
 dependencies = [
  "serde_core",
+ "serde_derive",
 ]
 
 [[package]]
