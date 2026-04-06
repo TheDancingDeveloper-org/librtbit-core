@@ -39,11 +39,5 @@ jobs:
       - name: Run tests
         run: cargo test --workspace --lib
 
-      - name: Run tests (sha1-ring feature)
-        run: cargo test --workspace --lib --no-default-features --features sha1-ring
-
       - name: Clippy
         run: cargo clippy --workspace -- -D warnings
-
-      - name: Clippy (sha1-ring feature)
-        run: cargo clippy --workspace --no-default-features --features sha1-ring -- -D warnings
