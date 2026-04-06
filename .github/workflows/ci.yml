@@ -17,12 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure git for private deps
-        run: git config --global url."https://x-access-token:${{ secrets.GHCR_TOKEN }}@github.com/".insteadOf "https://github.com/"
-
-      - name: Configure Cargo to use git CLI
-        run: mkdir -p ~/.cargo && echo '[net]' > ~/.cargo/config.toml && echo 'git-fetch-with-cli = true' >> ~/.cargo/config.toml
-
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
@@ -30,6 +24,12 @@ jobs:
       - uses: Swatinem/rust-cache@v2
         with:
           prefix-key: v1-librtbit-core
+
+      - name: Configure git for private deps
+        run: git config --global url."https://x-access-token:${{ secrets.GHCR_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
+      - name: Configure Cargo to use git CLI
+        run: mkdir -p ~/.cargo && echo '[net]' > ~/.cargo/config.toml && echo 'git-fetch-with-cli = true' >> ~/.cargo/config.toml
 
       - name: Format check
         run: cargo fmt --all -- --check
