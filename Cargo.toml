@@ -21,7 +21,7 @@ rand = "0.9"
 parking_lot = "0.12"
 serde = "1"
 serde_derive = "1"
-buffers = { version = "0.1.0", registry = "forgejo", package = "librtbit-buffers" }
+buffers = { version = "0.1.1", registry = "forgejo", package = "librtbit-buffers" }
 bencode = { version = "0.1.0", registry = "forgejo", package = "librtbit-bencode" }
 clone_to_owned = { version = "0.1.0", registry = "forgejo", package = "librtbit-clone-to-owned" }
 sha1w = { version = "0.1.0", registry = "forgejo", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
