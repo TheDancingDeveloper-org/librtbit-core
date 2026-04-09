@@ -24,7 +24,7 @@ serde_derive = "1"
 buffers = { version = "0.1.1", registry = "forgejo", package = "librtbit-buffers" }
 bencode = { version = "0.1.1", registry = "forgejo", package = "librtbit-bencode" }
 clone_to_owned = { version = "0.1.1", registry = "forgejo", package = "librtbit-clone-to-owned" }
-sha1w = { version = "0.1.0", registry = "forgejo", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
+sha1w = { version = "0.1.1", registry = "forgejo", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
 itertools = "0.14"
 directories = "6"
 tokio-util = "0.7"
