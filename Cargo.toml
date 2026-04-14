@@ -4,7 +4,7 @@ version = "0.1.1"
 edition = "2024"
 description = "Core types and utilities for the rtbit BitTorrent client"
 license = "MIT"
-repository = "http://100.92.54.45:3002/indexarr/librtbit-core"
+repository = "https://github.com/AusAgentSmith-org/librtbit-core"
 
 [features]
 default = ["sha1-crypto-hash"]
@@ -21,10 +21,10 @@ rand = "0.10"
 parking_lot = "0.12"
 serde = "1"
 serde_derive = "1"
-buffers = { version = "0.1.1", registry = "forgejo", package = "librtbit-buffers" }
-bencode = { version = "0.1.1", registry = "forgejo", package = "librtbit-bencode" }
-clone_to_owned = { version = "0.1.1", registry = "forgejo", package = "librtbit-clone-to-owned" }
-sha1w = { version = "0.1.1", registry = "forgejo", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
+buffers = { version = "0.1.1", package = "librtbit-buffers" }
+bencode = { version = "0.1.1", package = "librtbit-bencode" }
+clone_to_owned = { version = "0.1.1", package = "librtbit-clone-to-owned" }
+sha1w = { version = "0.1.1", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
 itertools = "0.14"
 directories = "6"
 tokio-util = "0.7"
