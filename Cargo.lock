@@ -529,6 +529,8 @@ dependencies = [
 [[package]]
 name = "librtbit-bencode"
 version = "0.1.5"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "e7d35dd07182c2bc219e499bbbe8fa6ce059331767f46cd75cc144608b15840b"
 dependencies = [
  "anyhow",
  "arrayvec",
@@ -544,6 +546,8 @@ dependencies = [
 [[package]]
 name = "librtbit-buffers"
 version = "0.1.2"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "a3c284674535972fd7693f515f1d12c8ca20b5a2c37a03020bdeca32241cf29c"
 dependencies = [
  "bytes",
  "librtbit-clone-to-owned",
@@ -554,6 +558,8 @@ dependencies = [
 [[package]]
 name = "librtbit-clone-to-owned"
 version = "0.1.1"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "652077f668126ff93bf2c61fbfc88a38b60b9e50c1edc440a72c2a9a5b614459"
 dependencies = [
  "bytes",
 ]
@@ -590,6 +596,8 @@ dependencies = [
 [[package]]
 name = "librtbit-sha1-wrapper"
 version = "0.1.2"
+source = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"
+checksum = "2a49584e920ec499c2ea310f636b56169bad910a2be2920429c2964f81df2f53"
 dependencies = [
  "assert_cfg",
  "aws-lc-rs",
@@ -1328,31 +1336,3 @@ name = "zmij"
 version = "1.0.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8848ee67ecc8aedbaf3e4122217aff892639231befc6a1b58d29fff4c2cabaa"
-
-[[patch.unused]]
-name = "librtbit"
-version = "0.1.3"
-
-[[patch.unused]]
-name = "librtbit-dht"
-version = "0.1.3"
-
-[[patch.unused]]
-name = "librtbit-lsd"
-version = "0.1.2"
-
-[[patch.unused]]
-name = "librtbit-peer-protocol"
-version = "0.1.3"
-
-[[patch.unused]]
-name = "librtbit-tracker-comms"
-version = "0.1.5"
-
-[[patch.unused]]
-name = "librtbit-upnp"
-version = "0.1.2"
-
-[[patch.unused]]
-name = "librtbit-upnp-serve"
-version = "0.1.2"
