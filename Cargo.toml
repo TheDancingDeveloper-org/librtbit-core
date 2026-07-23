@@ -21,10 +21,10 @@ rand = "0.10"
 parking_lot = "0.12"
 serde = "1"
 serde_derive = "1"
-buffers = { version = "0.1.2", package = "librtbit-buffers", registry = "forgejo" }
-bencode = { version = "0.1.5", package = "librtbit-bencode", registry = "forgejo" }
-clone_to_owned = { version = "0.1.1", package = "librtbit-clone-to-owned", registry = "forgejo" }
-sha1w = { version = "0.1.2", package = "librtbit-sha1-wrapper", registry = "forgejo", optional = true, default-features = false }
+buffers = { git = "https://github.com/TheDancingDeveloper-org/librtbit-buffers.git", branch = "migration/github-native-source", package = "librtbit-buffers" }
+bencode = { git = "https://github.com/TheDancingDeveloper-org/librtbit-bencode.git", branch = "migration/github-native-source", package = "librtbit-bencode" }
+clone_to_owned = { git = "https://github.com/TheDancingDeveloper-org/librtbit-clone-to-owned.git", package = "librtbit-clone-to-owned" }
+sha1w = { git = "https://github.com/TheDancingDeveloper-org/librtbit-sha1-wrapper.git", package = "librtbit-sha1-wrapper", optional = true, default-features = false }
 itertools = "0.14"
 directories = "6"
 tokio-util = "0.7"
