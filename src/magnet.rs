@@ -133,18 +133,12 @@ impl Magnet {
                         }
                     }
                 }
-                "s" => {
+                "s" if !value.is_empty() => {
                     // BEP 46: optional salt parameter
-                    if !value.is_empty() {
-                        salt = Some(value.into_owned());
-                    }
+                    salt = Some(value.into_owned());
                 }
                 "tr" => trackers.push(value.into()),
-                "dn" => {
-                    if !value.is_empty() {
-                        name = Some(value.into_owned())
-                    }
-                }
+                "dn" if !value.is_empty() => name = Some(value.into_owned()),
                 "so" => {
                     // Process 'so' values, but silently ignore any which fail parsing
                     for file_desc in value.split(',') {

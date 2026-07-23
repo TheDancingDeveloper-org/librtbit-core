@@ -6,11 +6,14 @@ when:
 
 steps:
   - name: fmt
-    image: rust:1.94-bookworm
+    image: rust:1.95-bookworm
     environment:
       GIT_AUTH_TOKEN:
         from_secret: git_auth_token
+      RUSTC_WRAPPER: sccache
+      SCCACHE_REDIS: "redis://100.92.54.45:6380"
     commands:
+      - curl -sSfL "https://github.com/mozilla/sccache/releases/download/v0.8.2/sccache-v0.8.2-x86_64-unknown-linux-musl.tar.gz" | tar -xz -C /tmp && mv /tmp/sccache-v0.8.2-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
       - git config --global url."http://x-access-token:$GIT_AUTH_TOKEN@100.92.54.45:3002/".insteadOf "http://100.92.54.45:3002/"
       - printf '[registries.forgejo]\nindex = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"\ncredential-provider = "cargo:token"\n\n[registry]\ndefault = "forgejo"\n' > $CARGO_HOME/config.toml
       - printf '[registries.forgejo]\ntoken = "Bearer %s"\n' "$GIT_AUTH_TOKEN" > $CARGO_HOME/credentials.toml
@@ -18,33 +21,42 @@ steps:
       - cargo fmt --all -- --check
 
   - name: check
-    image: rust:1.94-bookworm
+    image: rust:1.95-bookworm
     environment:
       GIT_AUTH_TOKEN:
         from_secret: git_auth_token
+      RUSTC_WRAPPER: sccache
+      SCCACHE_REDIS: "redis://100.92.54.45:6380"
     commands:
+      - curl -sSfL "https://github.com/mozilla/sccache/releases/download/v0.8.2/sccache-v0.8.2-x86_64-unknown-linux-musl.tar.gz" | tar -xz -C /tmp && mv /tmp/sccache-v0.8.2-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
       - git config --global url."http://x-access-token:$GIT_AUTH_TOKEN@100.92.54.45:3002/".insteadOf "http://100.92.54.45:3002/"
       - printf '[registries.forgejo]\nindex = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"\ncredential-provider = "cargo:token"\n\n[registry]\ndefault = "forgejo"\n' > $CARGO_HOME/config.toml
       - printf '[registries.forgejo]\ntoken = "Bearer %s"\n' "$GIT_AUTH_TOKEN" > $CARGO_HOME/credentials.toml
       - cargo check --workspace
 
   - name: test
-    image: rust:1.94-bookworm
+    image: rust:1.95-bookworm
     environment:
       GIT_AUTH_TOKEN:
         from_secret: git_auth_token
+      RUSTC_WRAPPER: sccache
+      SCCACHE_REDIS: "redis://100.92.54.45:6380"
     commands:
+      - curl -sSfL "https://github.com/mozilla/sccache/releases/download/v0.8.2/sccache-v0.8.2-x86_64-unknown-linux-musl.tar.gz" | tar -xz -C /tmp && mv /tmp/sccache-v0.8.2-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
       - git config --global url."http://x-access-token:$GIT_AUTH_TOKEN@100.92.54.45:3002/".insteadOf "http://100.92.54.45:3002/"
       - printf '[registries.forgejo]\nindex = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"\ncredential-provider = "cargo:token"\n\n[registry]\ndefault = "forgejo"\n' > $CARGO_HOME/config.toml
       - printf '[registries.forgejo]\ntoken = "Bearer %s"\n' "$GIT_AUTH_TOKEN" > $CARGO_HOME/credentials.toml
       - cargo test --workspace
 
   - name: clippy
-    image: rust:1.94-bookworm
+    image: rust:1.95-bookworm
     environment:
       GIT_AUTH_TOKEN:
         from_secret: git_auth_token
+      RUSTC_WRAPPER: sccache
+      SCCACHE_REDIS: "redis://100.92.54.45:6380"
     commands:
+      - curl -sSfL "https://github.com/mozilla/sccache/releases/download/v0.8.2/sccache-v0.8.2-x86_64-unknown-linux-musl.tar.gz" | tar -xz -C /tmp && mv /tmp/sccache-v0.8.2-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
       - git config --global url."http://x-access-token:$GIT_AUTH_TOKEN@100.92.54.45:3002/".insteadOf "http://100.92.54.45:3002/"
       - printf '[registries.forgejo]\nindex = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"\ncredential-provider = "cargo:token"\n\n[registry]\ndefault = "forgejo"\n' > $CARGO_HOME/config.toml
       - printf '[registries.forgejo]\ntoken = "Bearer %s"\n' "$GIT_AUTH_TOKEN" > $CARGO_HOME/credentials.toml
@@ -52,7 +64,7 @@ steps:
       - cargo clippy --workspace -- -D warnings
 
   - name: publish
-    image: rust:1.94-bookworm
+    image: rust:1.95-bookworm
     environment:
       GIT_AUTH_TOKEN:
         from_secret: git_auth_token
@@ -60,22 +72,6 @@ steps:
       - printf '[registries.forgejo]\nindex = "sparse+https://repo.indexarr.net/api/packages/indexarr/cargo/"\ncredential-provider = "cargo:token"\n\n[registry]\ndefault = "forgejo"\n' > $CARGO_HOME/config.toml
       - printf '[registries.forgejo]\ntoken = "Bearer %s"\n' "$GIT_AUTH_TOKEN" > $CARGO_HOME/credentials.toml
       - cargo publish --allow-dirty 2>&1 || echo "Publish skipped (version may already exist)"
-    when:
-      - event: push
-        branch: main
-
-  - name: trigger-renovate
-    image: alpine/curl
-    environment:
-      WOODPECKER_TOKEN:
-        from_secret: woodpecker_token
-    commands:
-      - |
-        curl -sf -X POST \
-          "https://ci.indexarr.net/api/repos/indexarr/renovate/pipelines" \
-          -H "Authorization: Bearer $WOODPECKER_TOKEN" \
-          -H "Content-Type: application/json" \
-          -d '{"branch":"main"}'
     when:
       - event: push
         branch: main
@@ -89,7 +85,7 @@ steps:
       - |
         curl -s -X POST "$DISCORD_WEBHOOK_URL" \
           -H "Content-Type: application/json" \
-          -d "{\"embeds\":[{\"title\":\"librtbit-core published\",\"description\":\"Published to Forgejo registry. Renovate scan triggered.\",\"color\":3066993}]}"
+          -d "{\"embeds\":[{\"title\":\"librtbit-core published\",\"description\":\"Published to Forgejo registry.\",\"color\":3066993}]}"
     when:
       - event: push
         branch: main
