@@ -459,13 +459,13 @@ dependencies = [
 [[package]]
 name = "librtbit-bencode"
 version = "0.1.5"
-source = "git+https://github.com/TheDancingDeveloper-org/librtbit-bencode.git?branch=migration%2Fgithub-native-source#cb3bfef8de92fbef66fd8edb2811f84cdffd2d15"
+source = "git+https://github.com/TheDancingDeveloper-org/librtbit-bencode.git#c6e9086c4805375fa9f865228f0727a495639bcb"
 dependencies = [
  "anyhow",
  "arrayvec",
  "atoi",
  "bytes",
- "librtbit-buffers",
+ "librtbit-buffers 0.1.2 (git+https://github.com/TheDancingDeveloper-org/librtbit-buffers.git?branch=migration%2Fgithub-native-source)",
  "librtbit-clone-to-owned",
  "serde",
  "serde_derive",
@@ -476,6 +476,17 @@ dependencies = [
 name = "librtbit-buffers"
 version = "0.1.2"
 source = "git+https://github.com/TheDancingDeveloper-org/librtbit-buffers.git?branch=migration%2Fgithub-native-source#ac4adf618daa0b69ba7799233d469f105c47d75a"
+dependencies = [
+ "bytes",
+ "librtbit-clone-to-owned",
+ "serde",
+ "serde_derive",
+]
+
+[[package]]
+name = "librtbit-buffers"
+version = "0.1.2"
+source = "git+https://github.com/TheDancingDeveloper-org/librtbit-buffers.git#60fde393b379face7c0acfe7f654a1a5ae3f3731"
 dependencies = [
  "bytes",
  "librtbit-clone-to-owned",
@@ -504,7 +515,7 @@ dependencies = [
  "hex 0.4.3",
  "itertools",
  "librtbit-bencode",
- "librtbit-buffers",
+ "librtbit-buffers 0.1.2 (git+https://github.com/TheDancingDeveloper-org/librtbit-buffers.git)",
  "librtbit-clone-to-owned",
  "librtbit-sha1-wrapper",
  "memchr",
